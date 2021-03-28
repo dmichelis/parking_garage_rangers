@@ -1,5 +1,3 @@
-from IPython.display import clear_output
-
 class Parking_Garage:
     """Initialize Attributes for class Parking_Garage"""
     def __init__(self,parkingSpaceAvail,ticketsAvail,currentTicket):
@@ -35,7 +33,6 @@ class Parking_Garage:
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             
             print(f"\nTicket Status: {self.currentTicket}")
-            clear_output()
 
         
         # If self.ticketsAvail list is empty, say that garage is full
@@ -68,14 +65,15 @@ class Parking_Garage:
         if payment_amt != "":
             print("Your ticket has been paid. Please exit the parking garage within the next 15 minutes.")
             self.currentTicket[ticket_num] = 'paid'
-            for key, value in self.currentTicket.items():
-                if value == 'paid':
-                    del self.currentTicket[key]
-                    break
-
 
         else:
             self.currentTicket[ticket_num] = 'not paid'
+
+            # for key, value in self.currentTicket.items():
+            #     if value == 'paid':
+            #         del self.currentTicket[key]
+            #         break
+
 
         print(f"\nCurrent Status of Tickets: {self.currentTicket}")
 
@@ -89,11 +87,12 @@ class Parking_Garage:
             Update parkingSpace list to increase by 1 (space is avail again)
             Removes ticket k/v from currentTicket dictionary once paid
         """
-        
+        global ticket_num2
+
         ticket_num2 = int(input("Please enter your ticket number: "))
         if self.currentTicket[ticket_num2] == 'paid':
-            self.parkingSpaceAvail.append(ticket_num)
-            self.ticketsAvail.append(ticket_num)
+            self.parkingSpaceAvail.append(ticket_num2)
+            self.ticketsAvail.append(ticket_num2)
             print("Thank you, have a nice day!")
 
 
@@ -116,13 +115,15 @@ class Parking_Garage:
                 self.ticketsAvail.append(ticket_num2)
                 print("Thank you, have a nice day!")
 
-            for key, value in self.currentTicket.items():
-                if value == 'paid':
-                    del self.currentTicket[key]
-                    self.parkingSpaceAvail.append(ticket_num2)
-                    self.ticketsAvail.append(ticket_num2)
-                    break
-            
+        for key, value in list(self.currentTicket.items()):
+            if value == 'paid':
+                del self.currentTicket[key]
+                print(f"\nTickets Available: {self.ticketsAvail}")
+                print(f"\nSpaces Available: {self.parkingSpaceAvail}")
+                print(f"\nTicket Status: {self.currentTicket}")
+                break
+
+                      
             print(f"\nTickets Available: {self.ticketsAvail}")
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             print(f"\nTicket Status: {self.currentTicket}")
@@ -133,7 +134,6 @@ class Parking_Garage:
         # if self.currentTicket[ticket_num] == 'not paid':
         #     ticket_num2 = int(input("Please enter your ticket number: "))
         #     payment_amt2 = input("Press any key to pay. ") 
-
 
 
 parkingToday = Parking_Garage(10,10,10)
@@ -154,7 +154,8 @@ def run():
             # break
 
         elif park_today.lower() == 'finish':
-            parkingToday.leaveGarage()    
+            parkingToday.leaveGarage()
+  
 
 
 run()
