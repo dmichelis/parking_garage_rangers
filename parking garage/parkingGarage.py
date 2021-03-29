@@ -1,8 +1,8 @@
 class Parking_Garage:
     """Initialize Attributes for class Parking_Garage"""
     def __init__(self,parkingSpaceAvail,ticketsAvail,currentTicket):
-        self.parkingSpaceAvail = [i for i in range(1,11+1)]
-        self.ticketsAvail = [i for i in range(1,11+1)]
+        self.parkingSpaceAvail = [i for i in range(1,11)]
+        self.ticketsAvail = [i for i in range(1,11)]
         self.currentTicket = {}
 
 
@@ -14,20 +14,19 @@ class Parking_Garage:
             
             item(0) is popped from self.parkingSpaceAvail (range 1,11) for 10 total spaces (decreases parkingSpaceAvail by 1 until list is  empty)
         """
-
-
-        # Store popped ticket in a variable
-        last_ticket_popped = self.ticketsAvail.pop(0)
-
-
-        # Store popped parking space in a variable
-        last_space_popped = self.parkingSpaceAvail.pop(0)
-
+   
       
         # Provide ticket as long as self.ticketsAvail list is not empty
         if self.ticketsAvail != []:
+            # Store popped ticket in a variable
+            last_ticket_popped = self.ticketsAvail.pop(0)
+            
+            # Store popped parking space in a variable
+            last_space_popped = self.parkingSpaceAvail.pop(0)
+            
             print(f'Please take your ticket {last_ticket_popped}')
             self.currentTicket[last_ticket_popped] = ""
+            
             
             print(f"\nTickets Available: {self.ticketsAvail}")
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
@@ -96,12 +95,6 @@ class Parking_Garage:
             print("Thank you, have a nice day!")
 
 
-# This pulled the value out before checking for payment with the Finish input - gave an error:
-            # for key, value in self.currentTicket.items():
-            #     if value == 'paid':
-            #         del self.currentTicket[key]
-            #         break
-
             print(f"\nTickets Available: {self.ticketsAvail}")
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             print(self.currentTicket)
@@ -127,13 +120,6 @@ class Parking_Garage:
             print(f"\nTickets Available: {self.ticketsAvail}")
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             print(f"\nTicket Status: {self.currentTicket}")
-            # self.currentTicket[ticket_num] = 'paid'
-            # ticket_num2 = int(input("Please enter your ticket number: "))
-            # payment_amt2 = input("Press any key to pay. ") 
-
-        # if self.currentTicket[ticket_num] == 'not paid':
-        #     ticket_num2 = int(input("Please enter your ticket number: "))
-        #     payment_amt2 = input("Press any key to pay. ") 
 
 
 parkingToday = Parking_Garage(10,10,10)
