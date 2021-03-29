@@ -4,7 +4,7 @@ class Parking_Garage:
         self.parkingSpaceAvail = [i for i in range(1,11)]
         self.ticketsAvail = [i for i in range(1,11)]
         self.currentTicket = {}
-
+# Rows 1-7 Erin
 
     def takeTicket(self):
         """
@@ -33,11 +33,12 @@ class Parking_Garage:
             
             print(f"\nTicket Status: {self.currentTicket}")
 
-        
+
         # If self.ticketsAvail list is empty, say that garage is full
         else:
             print("Sorry, the parking garage is full.")   
     
+    # Row 9-39 Erin
 
     def payForParking(self):
         """
@@ -52,6 +53,8 @@ class Parking_Garage:
         # Define ticket_num and payment_num as global variables to use outside of this method/function
         global ticket_num
         global payment_amt
+
+#Row 43-55 Erin and Dimitri
 
 
         # Store user input for ticket_num and payment_amt in variables
@@ -76,6 +79,7 @@ class Parking_Garage:
 
         print(f"\nCurrent Status of Tickets: {self.currentTicket}")
 
+#Row 61-80 Erin and Dimitri
 
     def leaveGarage(self):
         """
@@ -99,6 +103,7 @@ class Parking_Garage:
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             print(self.currentTicket)
 
+#Row 84-104 Dimitri
 
         if self.currentTicket[ticket_num2] != 'paid':
             payment_amt2 = input("Type any letter to pay. ")
@@ -121,6 +126,8 @@ class Parking_Garage:
             print(f"\nSpaces Available: {self.parkingSpaceAvail}")
             print(f"\nTicket Status: {self.currentTicket}")
 
+    #Row 108-127 Erin and Dimitri
+
 
 parkingToday = Parking_Garage(10,10,10)
 
@@ -142,6 +149,6 @@ def run():
         elif park_today.lower() == 'finish':
             parkingToday.leaveGarage()
   
-
+#Row 134-150 Erin
 
 run()
